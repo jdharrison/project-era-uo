@@ -1024,7 +1024,7 @@ namespace Server
 		public Skills( Mobile owner )
 		{
 			m_Owner = owner;
-			m_Cap = 7000;
+			m_Cap = 60000;
 
 			SkillInfo[] info = SkillInfo.Table;
 
@@ -1052,7 +1052,7 @@ namespace Server
 				case 1:
 				{
 					if ( version < 2 )
-						m_Cap = 7000;
+						m_Cap = 60000;
 
 					if ( version < 3 )
 						/*m_Total =*/ reader.ReadInt();

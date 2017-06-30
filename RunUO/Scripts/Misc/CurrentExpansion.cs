@@ -7,7 +7,7 @@ namespace Server
 {
 	public class CurrentExpansion
 	{
-		private static readonly Expansion Expansion = Expansion.TOL;
+		private static readonly Expansion Expansion = Expansion.T2A;
 
 		public static void Configure()
 		{

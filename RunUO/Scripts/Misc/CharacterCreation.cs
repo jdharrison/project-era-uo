@@ -696,7 +696,7 @@ namespace Server.Misc
 				newChar.BankBox.DropItem( ticket );
 			}
 
-			CityInfo city = GetStartLocation( args, young );
+			CityInfo city = new CityInfo("Delucia", "Stable", 5282, 3991, 37, Map.Felucca);
 
 			newChar.MoveToWorld( city.Location, city.Map );
 
