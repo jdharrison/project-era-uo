@@ -327,6 +327,7 @@ namespace Server.Engines.CannedEvil
 
 			m_Active = true;
 			m_HasBeenAdvanced = false;
+			m_SPawnSzMod=12; // kolio's bugfix (Oct 19, 2014) for RunUO 2.4 and 2.5
 
 			if( m_Timer != null )
 				m_Timer.Stop();

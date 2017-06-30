@@ -1,6 +1,9 @@
+// Nerun's Distro changes at lines 53-5; 2426-38.
 using System;
 using System.Collections.Generic;
+#if Framework_4_0
 using System.Threading.Tasks;
+#endif
 using Server.Regions;
 using Server.Targeting;
 using Server.Network;
@@ -50,6 +53,9 @@ namespace Server.Mobiles
 						//"(All/Name) attack"  All or the specified pet(s) currently under your control attack the target.
 		Patrol,			//"(Name) patrol"  Roves between two or more guarded targets.
 		Release,		//"(Name) release"  Releases pet back into the wild (removes "tame" status).
+// >>> [1st change of 2]
+		Dismiss,		//"(Name) dismiss"  Dismiss hireling (removes "tame" status).
+// end 1st
 		Stay,			//"(All/Name) stay" All or the specified pet(s) will stop and stay in current spot.
 		Stop,			//"(All/Name) stop Cancels any current orders to attack, guard or follow.
 		Transfer		//"(Name) transfer" Transfers complete ownership to targeted player.
@@ -1191,6 +1197,7 @@ namespace Server.Mobiles
 
 		public override ApplyPoisonResult ApplyPoison( Mobile from, Poison poison )
 		{
+
 			if ( !Alive || IsDeadPet )
 				return ApplyPoisonResult.Immune;
 
@@ -2420,6 +2427,19 @@ namespace Server.Mobiles
 				case AIType.AI_Thief:
 					m_AI = new ThiefAI(this);
 					break;
+// >>> [2nd change of 2]
+// ERICA'S ORC SCOUT and NINJA
+				case AIType.AI_OrcScout:
+					m_AI = new OrcScoutAI(this);			         
+				        break;
+				case AIType.AI_Ninja:
+					m_AI = new NinjaAI(this);
+					break;
+// PAPPA SMURF's Spellbinder
+				case AIType.AI_Spellbinder:
+					m_AI = new SpellbinderAI(this);
+					break;
+// end 2nd
 			}
 		}
 
@@ -2570,6 +2590,7 @@ namespace Server.Mobiles
 				m_dPassiveSpeed = value;
 			}
 		}
+
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public double CurrentSpeed
@@ -3598,6 +3619,7 @@ namespace Server.Mobiles
 
 			base.OnMapChange( oldMap );
 		}
+
 
 		protected override void OnLocationChange( Point3D oldLocation )
 		{
@@ -5765,11 +5787,19 @@ namespace Server.Mobiles
 			// added array for wild creatures in house regions to be removed
 			List<BaseCreature> toRemove = new List<BaseCreature>();
 
+#if Framework_4_0
 			Parallel.ForEach(World.Mobiles.Values, m => {
+#else
+			foreach ( Mobile m in World.Mobiles.Values ) {
+#endif
 				if ( m is BaseMount && ((BaseMount)m).Rider != null )
 				{
 					((BaseCreature)m).OwnerAbandonTime = DateTime.MinValue;
+#if Framework_4_0
 					return;
+#else
+					continue;
+#endif
 				}
 
 				if ( m is BaseCreature )
@@ -5828,7 +5858,10 @@ namespace Server.Mobiles
 						c.RemoveStep = 0;
 					}
 				}
-			});
+			}
+#if Framework_4_0
+			);
+#endif
 
 			foreach ( BaseCreature c in toRelease )
 			{
