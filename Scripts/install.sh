@@ -10,11 +10,14 @@ else
 fi
 
 # stop old server, if one is present
-if [ -z "/etc/systemd/runuo.service" ]; then
+if [ -z "/etc/systemd/system/runuo.service" ]; then
     systemctl runuo stop
     echo "Stopping running Server ..."
 fi
 
 # copy over the latest service
-sudo cp /home/this/project-era-uo/Scripts/runuo.service /etc/systemd/runuo.service
+sudo cp /home/this/project-era-uo/Scripts/runuo.service /etc/systemd/system/runuo.service
+sudo systemctl daemon-reload
+echo "Installed latest service ..."
+
 echo "Installation done."

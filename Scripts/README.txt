@@ -7,18 +7,10 @@
 #########################################
 
 #########################################
-## Install Server
+## Install Service
 #########################################
 
     bash install.sh
-
-#########################################
-
-#########################################
-##  Running Server
-#########################################
-
-    bash run.sh
 
 #########################################
 
@@ -28,8 +20,14 @@
 
     Use the 'systemctl' command after install.
         
-        systemctl start lostera
-        systemctl stop lostera
-        systemctl ... lostera
+        sudo systemctl enable runuo
+        sudo systemctl disable runuo
+
+        sudo systemctl start runuo
+        sudo systemctl stop runuo
+
+    Use the 'journalctl' command to view logs.
+
+        sudo journalctl -u runuo
 
 #########################################
