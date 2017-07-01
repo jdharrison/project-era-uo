@@ -1,0 +1,13 @@
+[Unit]
+Description=RunUO
+After=network.target
+
+[Service]
+Type=simple
+User=this
+WorkingDirectory=/home/this/project-era-uo
+ExecStart=bash Scripts/run.sh
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
