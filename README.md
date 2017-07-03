@@ -1,5 +1,5 @@
 ## CHANGE LOG
-##
+#
 ## Keep this section updated with ALL changes
 
 CORE:
@@ -15,5 +15,3 @@ CORE:
 ADDONS:
 - Chat feature
 - PremiumSpawner (Neruns Spawner)
-
-###############################################
