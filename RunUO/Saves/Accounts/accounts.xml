@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<accounts count="2">
+<accounts count="3">
 	<account>
 		<username>nimda</username>
 		<newCryptPassword>1B-5F-D6-D7-52-B8-9C-66-73-AD-58-28-76-E3-D3-3F-DC-48-E8-E0</newCryptPassword>
 		<accessLevel>Owner</accessLevel>
 		<created>2017-06-28T05:39:50.946254Z</created>
-		<lastLogin>2017-06-30T03:12:46.668468Z</lastLogin>
-		<totalGameTime>PT45M11.012744S</totalGameTime>
+		<lastLogin>2017-07-03T04:10:13.837264Z</lastLogin>
+		<totalGameTime>PT7H49M36.592807S</totalGameTime>
 		<chars>
 			<char index="0">242</char>
 			<char index="1">243</char>
 			<char index="2">304</char>
+			<char index="3">432</char>
+			<char index="4">26977</char>
 		</chars>
 		<addressList count="3">
 			<ip>76.94.152.240</ip>
@@ -20,13 +22,28 @@
 		<totalCurrency>0</totalCurrency>
 	</account>
 	<account>
-		<username>test</username>
-		<newCryptPassword>51-AB-B9-63-60-78-DE-FB-F8-88-D8-45-7A-7C-76-F8-5C-8F-11-4C</newCryptPassword>
-		<created>2017-06-28T06:00:36.299098Z</created>
-		<lastLogin>2017-06-28T06:01:31.162016Z</lastLogin>
-		<totalGameTime>PT2M14.715872S</totalGameTime>
+		<username>jdharrison</username>
+		<newCryptPassword>15-C8-8D-43-80-72-71-28-18-29-77-21-5F-D2-15-76-BA-2F-D9-0D</newCryptPassword>
+		<created>2017-07-02T07:10:38.96554Z</created>
+		<lastLogin>2017-07-02T07:28:23.649506Z</lastLogin>
+		<totalGameTime>PT17M25.22313S</totalGameTime>
 		<chars>
-			<char index="0">241</char>
+			<char index="0">381</char>
+		</chars>
+		<addressList count="1">
+			<ip>76.94.152.240</ip>
+		</addressList>
+		<totalCurrency>0</totalCurrency>
+	</account>
+	<account>
+		<username>jdharrison2</username>
+		<newCryptPassword>70-C9-9A-15-84-0C-77-17-00-75-2F-FD-DC-38-17-B4-BE-7A-17-07</newCryptPassword>
+		<created>2017-07-02T07:27:57.119753Z</created>
+		<lastLogin>2017-07-03T04:07:20.758001Z</lastLogin>
+		<totalGameTime>PT3M16.486663S</totalGameTime>
+		<chars>
+			<char index="0">383</char>
+			<char index="1">395</char>
 		</chars>
 		<addressList count="1">
 			<ip>76.94.152.240</ip>

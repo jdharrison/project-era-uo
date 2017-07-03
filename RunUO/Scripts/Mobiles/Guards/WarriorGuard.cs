@@ -292,14 +292,14 @@ namespace Server.Mobiles
 					if ( target is BaseCreature )
 						((BaseCreature)target).NoKillAwards = true;
 
-					target.Damage( target.HitsMax, m_Owner );
-					target.Kill(); // just in case, maybe Damage is overriden on some shard
+					// target.Damage( target.HitsMax, m_Owner );
+					// target.Kill(); // just in case, maybe Damage is overriden on some shard
 
-					if ( target.Corpse != null && !target.Player )
+					// if ( target.Corpse != null && !target.Player )
 						target.Corpse.Delete();
 
-					m_Owner.Focus = null;
-					Stop();
+					// m_Owner.Focus = null;
+					// Stop();
 				}// </instakill>
 				/*else if ( !m_Owner.InRange( target, 20 ) )
 				{
@@ -356,13 +356,12 @@ namespace Server.Mobiles
 				if ( (m_Stage++ % 4) == 0 || !m_Owner.Move( m_Owner.Direction ) )
 					m_Owner.Direction = (Direction)Utility.Random( 8 );
 
-				if ( m_Stage > 16 )
-				{
-					Effects.SendLocationParticles( EffectItem.Create( m_Owner.Location, m_Owner.Map, EffectItem.DefaultDuration ), 0x3728, 10, 10, 2023 );
-					m_Owner.PlaySound( 0x1FE );
-
-					m_Owner.Delete();
-				}
+				// if ( m_Stage > 16 )
+				// {
+				//	Effects.SendLocationParticles( EffectItem.Create( m_Owner.Location, m_Owner.Map, EffectItem.DefaultDuration ), 0x3728, 10, 10, 2023 );
+				//	m_Owner.PlaySound( 0x1FE );
+				//	m_Owner.Delete();
+				//}
 			}
 		}
 	}

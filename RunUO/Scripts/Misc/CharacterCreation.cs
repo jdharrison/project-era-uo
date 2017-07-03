@@ -27,10 +27,8 @@ namespace Server.Misc
 				m.AddItem( pack );
 			}
 
-			PackItem( new RedBook( "a book", m.Name, 20, true ) );
+                        PackItem( new TheLostEraBook() );
 			PackItem( new Gold( 1000 ) ); // Starting gold can be customized here
-			PackItem( new Dagger() );
-			PackItem( new Candle() );
 		}
 
 		private static Item MakeNewbie( Item item )
@@ -654,8 +652,8 @@ namespace Server.Misc
 
 				pm.Profession = args.Profession;
 
-				if ( pm.AccessLevel == AccessLevel.Player && ((Account)pm.Account).Young )
-					young = pm.Young = true;
+				//if ( pm.AccessLevel == AccessLevel.Player && ((Account)pm.Account).Young )
+				//	young = pm.Young = true;
 			}
 
 			SetName( newChar, args.Name );
@@ -696,7 +694,7 @@ namespace Server.Misc
 				newChar.BankBox.DropItem( ticket );
 			}
 
-			CityInfo city = new CityInfo("Delucia", "Stable", 5282, 3991, 37, Map.Felucca);
+			CityInfo city = new CityInfo("Lost Lands", "Encampment", 5208, 3609, 15, Map.Felucca);
 
 			newChar.MoveToWorld( city.Location, city.Map );
 

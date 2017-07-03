@@ -15,6 +15,9 @@ namespace Server.Spells
 
 		public override bool ConsumeReagents()
 		{
+			// TheLostEra
+			return true;
+/*
 			if( base.ConsumeReagents() )
 				return true;
 
@@ -22,6 +25,7 @@ namespace Server.Spells
 				return true;
 
 			return false;
+*/
 		}
 
 		private const double ChanceOffset = 20.0, ChanceLength = 100.0 / 7.0;
