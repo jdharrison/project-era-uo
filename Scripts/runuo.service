@@ -5,8 +5,8 @@ After=network.target
 [Service]
 Type=simple
 User=this
-WorkingDirectory=/home/this/project-era-uo
-ExecStart=/usr/bin/sudo /usr/bin/mono /home/this/project-era-uo/RunUO/RunUO.exe
+WorkingDirectory=/var/opt/project-era-uo
+ExecStart=/usr/bin/sudo /usr/bin/mono /var/opt/project-era-uo/RunUO/RunUO.exe
 ExecStop=/bin/echo "Stopping ..."
 Restart=on-abort
 
