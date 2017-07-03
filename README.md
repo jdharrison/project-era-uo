@@ -9,7 +9,7 @@ CORE:
 - Guards never despawn
 - Players start in custom Delucia location
 - Players can't have Young status
-- Accounts per ip up to 5
+- Each IP can have up to 5 accounts
 - Characters can be deleted anytime
 
 ADDONS:
