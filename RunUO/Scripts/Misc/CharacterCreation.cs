@@ -1047,8 +1047,9 @@ namespace Server.Misc
 
 					if ( !Core.AOS )
 					{
-						foreach ( Item item in regs.Items )
-							item.LootType = LootType.Newbied;
+						// TheLostEra
+						// foreach ( Item item in regs.Items )
+						//	item.LootType = LootType.Newbied;
 					}
 
 					PackItem( regs );
@@ -1201,8 +1202,9 @@ namespace Server.Misc
 
 		private static void EquipItem( Item item, bool mustEquip )
 		{
-			if ( !Core.AOS )
-				item.LootType = LootType.Newbied;
+			// TheLostEra
+			// if ( !Core.AOS )
+			//	item.LootType = LootType.Newbied;
 
 			if ( m_Mobile != null && m_Mobile.EquipItem( item ) )
 				return;
@@ -1217,8 +1219,9 @@ namespace Server.Misc
 
 		private static void PackItem( Item item )
 		{
-			if ( !Core.AOS )
-				item.LootType = LootType.Newbied;
+			// TheLostEra
+			// if ( !Core.AOS )
+			//	item.LootType = LootType.Newbied;
 
 			Container pack = m_Mobile.Backpack;
 
@@ -1543,11 +1546,12 @@ namespace Server.Misc
 				{
 					BagOfReagents regs = new BagOfReagents( 30 );
 
-					if ( !Core.AOS )
-					{
-						foreach ( Item item in regs.Items )
-							item.LootType = LootType.Newbied;
-					}
+					// TheLostEra
+					//if ( !Core.AOS )
+					//{
+						// foreach ( Item item in regs.Items )
+						//	item.LootType = LootType.Newbied;
+					//}
 
 					PackItem( regs );
 
