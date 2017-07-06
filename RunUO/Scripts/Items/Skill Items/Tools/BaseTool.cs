@@ -119,7 +119,8 @@ namespace Server.Items
 
 		public override void OnSingleClick( Mobile from )
 		{
-			DisplayDurabilityTo( from );
+			if(ShowUsesRemaining)
+				DisplayDurabilityTo( from );
 
 			base.OnSingleClick( from );
 		}
