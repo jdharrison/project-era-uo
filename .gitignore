@@ -2,3 +2,6 @@
 RunUO/Logs/*
 *.log
 RunUO/Backups/*
+.idea/
+*.csproj
+project-era-uo/

@@ -60,7 +60,7 @@ namespace Server.Items
 			return 100;
 		}
 
-		public bool ShowUsesRemaining{ get{ return true; } set{} }
+		public virtual bool ShowUsesRemaining{ get{ return true; } set{} }
 
 		public abstract CraftSystem CraftSystem{ get; }
 

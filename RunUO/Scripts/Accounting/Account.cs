@@ -19,7 +19,9 @@ namespace Server.Accounting
 {
 	public class Account : IAccount, IComparable, IComparable<Account>
 	{
-		public static readonly TimeSpan YoungDuration = TimeSpan.FromHours( 40.0 );
+		// TheLostEra
+		// NEVER allow Young accounts
+		public static readonly TimeSpan YoungDuration = TimeSpan.FromHours( -1 );
 
 		public static readonly TimeSpan InactiveDuration = TimeSpan.FromDays( 180.0 );
 
@@ -372,7 +374,7 @@ namespace Server.Accounting
 		/// </summary>
 		public bool Inactive
 		{
-			get 
+			get
 			{
 				if( this.AccessLevel != AccessLevel.Player )
 					return false;
@@ -744,7 +746,7 @@ namespace Server.Accounting
 		public Account( string username, string password )
 		{
 			m_Username = username;
-			
+
 			SetPassword( password );
 
 			m_AccessLevel = AccessLevel.Player;
@@ -815,7 +817,7 @@ namespace Server.Accounting
 			m_Flags = Utility.GetXMLInt32( Utility.GetText( node["flags"], "0" ), 0 );
 			m_Created = Utility.GetXMLDateTime( Utility.GetText( node["created"], null ), DateTime.UtcNow );
 			m_LastLogin = Utility.GetXMLDateTime( Utility.GetText( node["lastLogin"], null ), DateTime.UtcNow );
-			
+
 			TotalCurrency = Utility.GetXMLDouble( Utility.GetText(node["totalCurrency"], "0" ), 0 );
 
 			m_Mobiles = LoadMobiles( node );
@@ -1275,7 +1277,25 @@ namespace Server.Accounting
 		/// </summary>
 		public int Limit
 		{
-			get { return ( Core.SA ? 7 : Core.AOS ? 6 : 5 ); }
+			get
+			{
+				// TheLostEra
+				// Players can only have one character
+				switch (m_AccessLevel)
+				{
+					case AccessLevel.Player:
+					default:
+						return 1;
+
+					case AccessLevel.Counselor:
+					case AccessLevel.GameMaster:
+					case AccessLevel.Seer:
+					case AccessLevel.Administrator:
+					case AccessLevel.Developer:
+					case AccessLevel.Owner:
+						return 7;
+				}
+			}
 		}
 
 		/// <summary>

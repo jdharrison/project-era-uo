@@ -25,10 +25,14 @@ namespace Server.Misc
 					"You will find 9000 gold pieces deposited into your bank box.  Spend it as you see fit and enjoy yourself!",
 					"A bag of PowerScrolls has been placed in your bank box."
 				} :
+			// TheLostEra
+			// Servers introductin message
 			new string[]
-				{	//Yes, this message is a pathetic message, It's suggested that you change it.
-					"Welcome to this shard.",
-					"Please enjoy your stay."
+				{
+					"Welcome to The Lost Era!",
+					"Currently we are in Beta mode, but your data will NOT be wiped.",
+					"There is a Slack dedicated to support and annoucements, or just trade / general chat.",
+					"Join it @ 'thelostera-uo.slack.com'."
 				} );
 
 		public WelcomeTimer( Mobile m ) : this( m, m_Messages.Length )

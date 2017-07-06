@@ -16,6 +16,7 @@ namespace Server.Spells
 		public override bool ConsumeReagents()
 		{
 			// TheLostEra
+			// Never consume reagents for Magery spells
 			return true;
 /*
 			if( base.ConsumeReagents() )
