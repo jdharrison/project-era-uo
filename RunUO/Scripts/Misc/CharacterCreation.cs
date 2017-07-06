@@ -27,8 +27,11 @@ namespace Server.Misc
 				m.AddItem( pack );
 			}
 
-                        PackItem( new TheLostEraBook() );
-			PackItem( new Gold( 1000 ) ); // Starting gold can be customized here
+			// TheLostEra
+			PackItem( new JacksToolkit() );
+
+			// TODO: Chapter_1
+			// PackItem( new TheLostEraBook() );
 		}
 
 		private static Item MakeNewbie( Item item )
@@ -763,14 +766,14 @@ namespace Server.Misc
 					}
 					else
 					{
-						useHaven = true; 
+						useHaven = true;
 
 						new BadStartMessage( m, 1062205 );
 						/*
-						 * Unfortunately you are playing on a *NON-Age-Of-Shadows* game 
-						 * installation and cannot be transported to Malas.  
-						 * You will not be able to take your new player quest in Malas 
-						 * without an AOS client.  You are now being taken to the city of 
+						 * Unfortunately you are playing on a *NON-Age-Of-Shadows* game
+						 * installation and cannot be transported to Malas.
+						 * You will not be able to take your new player quest in Malas
+						 * without an AOS client.  You are now being taken to the city of
 						 * Haven on the Trammel facet.
 						 * */
 					}
@@ -793,10 +796,10 @@ namespace Server.Misc
 
 						new BadStartMessage( m, 1063487 );
 						/*
-						 * Unfortunately you are playing on a *NON-Samurai-Empire* game 
-						 * installation and cannot be transported to Tokuno. 
-						 * You will not be able to take your new player quest in Tokuno 
-						 * without an SE client. You are now being taken to the city of 
+						 * Unfortunately you are playing on a *NON-Samurai-Empire* game
+						 * installation and cannot be transported to Tokuno.
+						 * You will not be able to take your new player quest in Tokuno
+						 * without an SE client. You are now being taken to the city of
 						 * Haven on the Trammel facet.
 						 * */
 					}
@@ -815,10 +818,10 @@ namespace Server.Misc
 
 						new BadStartMessage( m, 1063487 );
 						/*
-						 * Unfortunately you are playing on a *NON-Samurai-Empire* game 
-						 * installation and cannot be transported to Tokuno. 
-						 * You will not be able to take your new player quest in Tokuno 
-						 * without an SE client. You are now being taken to the city of 
+						 * Unfortunately you are playing on a *NON-Samurai-Empire* game
+						 * installation and cannot be transported to Tokuno.
+						 * You will not be able to take your new player quest in Tokuno
+						 * without an SE client. You are now being taken to the city of
 						 * Haven on the Trammel facet.
 						 * */
 					}
@@ -1149,12 +1152,12 @@ namespace Server.Misc
 				{
 					addSkillItems = false;
 					EquipItem( new Kasa() );
-					
+
 					int[] hues = new int[] { 0x1A8, 0xEC, 0x99, 0x90, 0xB5, 0x336, 0x89	};
 					//TODO: Verify that's ALL the hues for that above.
 
 					EquipItem( new TattsukeHakama( hues[Utility.Random(hues.Length)] ) );
-					
+
 					EquipItem( new HakamaShita( 0x2C3 ) );
 					EquipItem( new NinjaTabi( 0x2C3 ) );
 
@@ -1349,7 +1352,7 @@ namespace Server.Misc
 						EquipItem( new ElvenCompositeLongbow() );
 					else
 						EquipItem( new Bow() );
-					
+
 					break;
 				}
 				case SkillName.ArmsLore:

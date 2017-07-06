@@ -18,7 +18,7 @@ namespace Server.Misc
 
 		protected override void OnTick()
 		{
-			FoodDecay();			
+			FoodDecay();
 		}
 
 		public static void FoodDecay()
@@ -32,13 +32,24 @@ namespace Server.Misc
 
 		public static void HungerDecay( Mobile m )
 		{
-			if ( m != null && m.Hunger >= 1 )
-				m.Hunger -= 1;
+			if (m == null)
+				return;
+
+			m.Hunger -= 1;
+
+			if(m.Hunger < 0)
+			{
+				m.SendMessage(0x21, "You are dying of hunger!");
+				m.Damage((int)Math.Abs(Math.Pow(m.Hunger, 2)));
+			}
 		}
 
 		public static void ThirstDecay( Mobile m )
 		{
-			if ( m != null && m.Thirst >= 1 )
+			if (m == null)
+				return;
+
+			if (m.Thirst >= 1)
 				m.Thirst -= 1;
 		}
 	}

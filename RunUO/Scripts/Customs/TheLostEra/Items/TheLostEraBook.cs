@@ -3,7 +3,7 @@ using Server;
 
 namespace Server.Items
 {
-	public class TheLostEraBook : RedBook
+	public sealed class TheLostEraBook : RedBook
 	{
                /*
 Prelude
@@ -55,7 +55,7 @@ always return to life anew.
 
     From that he took strength
 and rallied survivors. He then
-ventured to the last known 
+ventured to the last known
 refuge from the Shadows.
 
                */
@@ -79,6 +79,7 @@ refuge from the Shadows.
 		[Constructable]
 		public TheLostEraBook() : base( false )
 		{
+			LootType = LootType.Blessed;
 			Hue = 0x3E4;
 		}
 

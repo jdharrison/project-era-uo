@@ -110,20 +110,25 @@ namespace Server.Items
 			if ( iHunger >= 20 )
 			{
 				from.Hunger = 20;
-				from.SendLocalizedMessage( 500872 ); // You manage to eat the food, but you are stuffed!
+//				from.SendLocalizedMessage( 500872 ); // You manage to eat the food, but you are stuffed!
+				from.SendMessage( "You manage to eat the food, but it has no effect." );
 			}
 			else
 			{
 				from.Hunger = iHunger;
 
 				if ( iHunger < 5 )
-					from.SendLocalizedMessage( 500868 ); // You eat the food, but are still extremely hungry.
+					from.SendMessage( "You eat the food, but feel slow." );
+//					from.SendLocalizedMessage( 500868 ); // You eat the food, but are still extremely hungry.
 				else if ( iHunger < 10 )
-					from.SendLocalizedMessage( 500869 ); // You eat the food, and begin to feel more satiated.
+					from.SendMessage( "You eat the food, and feel normal." );
+//					from.SendLocalizedMessage( 500869 ); // You eat the food, and begin to feel more satiated.
 				else if ( iHunger < 15 )
-					from.SendLocalizedMessage( 500870 ); // After eating the food, you feel much less hungry.
+					from.SendMessage( "After eating the food, and feel sharper." );
+					//					from.SendLocalizedMessage( 500870 ); // After eating the food, you feel much less hungry.
 				else
-					from.SendLocalizedMessage( 500871 ); // You feel quite full after consuming the food.
+					from.SendMessage( "You are full, and feel like a genius." );
+//					from.SendLocalizedMessage( 500871 ); // You feel quite full after consuming the food.
 			}
 
 			return true;

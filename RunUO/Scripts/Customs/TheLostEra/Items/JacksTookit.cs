@@ -14,7 +14,7 @@
 
 		public override string DefaultName
 		{
-			get { return "Jacks Toolkit"; }
+			get { return "Jack's Toolkit"; }
 		}
 	}
 }

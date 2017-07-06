@@ -132,6 +132,13 @@ namespace Server.Misc
 
 			gc *= skill.Info.GainFactor;
 
+			// TheLostEra
+			if (from is PlayerMobile)
+			{
+				float hungerGain = from.Hunger <= 0 ? 0 : from.Hunger / 10f;
+				gc *= hungerGain;
+			}
+
 			if ( gc < 0.01 )
 				gc = 0.01;
 

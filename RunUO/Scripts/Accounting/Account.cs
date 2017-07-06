@@ -756,6 +756,8 @@ namespace Server.Accounting
 
 			m_Mobiles = new Mobile[7];
 
+			// TheLostEra
+
 			m_IPRestrictions = new string[0];
 			m_LoginIPs = new IPAddress[0];
 
