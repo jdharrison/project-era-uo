@@ -8,14 +8,14 @@ namespace Server.Misc
 		public static void Configure()
 		{
 			/* Here we configure all maps. Some notes:
-			 * 
+			 *
 			 * 1) The first 32 maps are reserved for core use.
 			 * 2) Map 0x7F is reserved for core use.
 			 * 3) Map 0xFF is reserved for core use.
 			 * 4) Changing or removing any predefined maps may cause server instability.
 			 */
 
-			RegisterMap( 0, 0, 0, 7168, 4096, 2, "Felucca",		MapRules.FeluccaRules );
+			RegisterMap( 0, 0, 0, 7168, 4096, 4, "Felucca",		MapRules.FeluccaRules );
 			RegisterMap( 1, 1, 1, 7168, 4096, 0, "Trammel",		MapRules.TrammelRules );
 			RegisterMap( 2, 2, 2, 2304, 1600, 1, "Ilshenar",	MapRules.TrammelRules );
 			RegisterMap( 3, 3, 3, 2560, 2048, 1, "Malas",		MapRules.TrammelRules );
@@ -26,7 +26,7 @@ namespace Server.Misc
 
 			/* Example of registering a custom map:
 			 * RegisterMap( 32, 0, 0, 6144, 4096, 3, "Iceland", MapRules.FeluccaRules );
-			 * 
+			 *
 			 * Defined:
 			 * RegisterMap( <index>, <mapID>, <fileIndex>, <width>, <height>, <season>, <name>, <rules> );
 			 *  - <index> : An unreserved unique index for this map
