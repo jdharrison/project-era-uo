@@ -58,6 +58,7 @@ namespace TheLostEra.DefaultCharacter
 
 	        newChar.Race = Race.DefaultRace;
 	        newChar.Female = Utility.RandomBool();
+	        newChar.Body = newChar.Female ? 0x191 : 0x190;
 	        newChar.Hue = newChar.Race.RandomSkinHue();
 	        ((PlayerMobile)newChar).SandMining = true;
 	        ((PlayerMobile)newChar).Glassblowing = true;

@@ -199,6 +199,12 @@ namespace Server.Misc
 					state.Send( new DeleteResult( DeleteResultType.BadRequest ) );
 					state.Send( new CharacterListUpdate( acct ) );
 				}
+				else if (m.AccessLevel == AccessLevel.Player)
+				{
+					// TheLostEra
+					state.Send( new DeleteResult(DeleteResultType.BadRequest) );
+					state.Send( new CharacterListUpdate( acct ) );
+				}
 				else
 				{
 					Console.WriteLine( "Client: {0}: Deleting character {1} (0x{2:X})", state, index, m.Serial.Value );
