@@ -35,12 +35,36 @@ namespace Server.Misc
 			if (m == null)
 				return;
 
-			m.Hunger -= 1;
+			if (m.Hunger > 0)
+				m.Hunger -= 1;
 
-			if(m.Hunger < 0)
+			if (m.Alive && m.Player)
 			{
-				m.SendMessage(0x21, "You are dying of hunger!");
-				m.Damage((int)Math.Abs(Math.Pow(m.Hunger, 2)));
+				if (m.Hunger == 0)
+				{
+					m.SendMessage(0x21, "You have died of hunger!");
+					m.Kill();
+					return;
+				}
+
+				if(m.Hunger < 5)
+				{
+					m.SendMessage(0x21, "You are dying of hunger! You need to eat soon.");
+					m.Damage(5 * (5 - m.Hunger));
+				}
+
+				switch (m.Hunger)
+				{
+					case 5:
+						m.SendMessage(0x21, "You are beginning to starve, and feel slow.");
+						break;
+					case 10:
+						m.SendMessage("You feel hungry, but still feel normal.");
+						break;
+					case 15:
+						m.SendMessage("You begin to feel hungry, but still feel sharp.");
+						break;
+				}
 			}
 		}
 
