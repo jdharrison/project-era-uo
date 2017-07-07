@@ -199,7 +199,7 @@ namespace Server.Misc
 					state.Send( new DeleteResult( DeleteResultType.BadRequest ) );
 					state.Send( new CharacterListUpdate( acct ) );
 				}
-				else if (m.AccessLevel == AccessLevel.Player)
+				else if (m.Account.AccessLevel == AccessLevel.Player)
 				{
 					// TheLostEra
 					state.Send( new DeleteResult(DeleteResultType.BadRequest) );
