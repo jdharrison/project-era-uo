@@ -15,9 +15,9 @@
 		}
 
 		[Constructable]
-		public WoodPulp(int amount) : base(amount)
+		public WoodPulp(int amount) : base(0xF90)
 		{
-			Hue = 0x224;
+			Hue = 0x30;
 			Stackable = true;
 			Amount = amount;
 		}

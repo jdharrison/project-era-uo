@@ -359,7 +359,7 @@ namespace Server.Engines.Craft
 
 			// TheLostEra
 			AddCraft( typeof( BlankScroll ), 1044294, "Blank Scroll", 0, 120, typeof( WoodPulp ), "Wood Pulp", 1);
-			AddCraft( typeof( RecallRune ), 1044294, "Recall Rune", 25.0, 50.0, typeof( WoodPulp ), "Wood Pulp", 10);
+			AddCraft( typeof( RecallRune ), 1044294, "Recall Rune", 25.0, 50.0, typeof( WoodPulp ), "Wood Pulp", 5);
 			AddCraft( typeof( BulkOrders.BulkOrderBook ), 1044294, 1028793, 65.0, 115.0, typeof( BlankScroll ), 1044377, 10, 1044378 );
 			AddCraft( typeof( Spellbook ), 1044294, 1023834, 50.0, 126, typeof( BlankScroll ), 1044377, 10, 1044378 );
 
