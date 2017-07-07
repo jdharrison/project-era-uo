@@ -634,72 +634,34 @@ namespace Server.Misc
 
 			newChar.Player = true;
 			newChar.AccessLevel = args.Account.AccessLevel;
-			newChar.Female = args.Female;
-			//newChar.Body = newChar.Female ? 0x191 : 0x190;
 
-			if( Core.Expansion >= args.Race.RequiredExpansion )
-				newChar.Race = args.Race;	//Sets body
-			else
-				newChar.Race = Race.DefaultRace;
+			///////////////////////////////////////////////////////
+			// TheLostEra
 
-			//newChar.Hue = Utility.ClipSkinHue( args.Hue & 0x3FFF ) | 0x8000;
-			newChar.Hue = newChar.Race.ClipSkinHue( args.Hue & 0x3FFF ) | 0x8000;
+			newChar.Race = Race.DefaultRace;
+			newChar.Female = Utility.RandomBool();
+			newChar.Hue = newChar.Race.RandomSkinHue();
 
+			Utility.AssignRandomHair(newChar,true);
+			if (!newChar.Female)
+				Utility.AssignRandomFacialHair(newChar, true);
+
+
+			((PlayerMobile) newChar).SandMining = true;
+			((PlayerMobile) newChar).Glassblowing = true;
 			newChar.Hunger = 20;
-
-			bool young = false;
-
-			if ( newChar is PlayerMobile )
-			{
-				PlayerMobile pm = (PlayerMobile) newChar;
-
-				pm.Profession = args.Profession;
-
-				//if ( pm.AccessLevel == AccessLevel.Player && ((Account)pm.Account).Young )
-				//	young = pm.Young = true;
-			}
-
-			SetName( newChar, args.Name );
 
 			AddBackpack( newChar );
 
-			SetStats( newChar, state, args.Str, args.Dex, args.Int );
-			SetSkills( newChar, args.Skills, args.Profession );
-
-			Race race = newChar.Race;
-
-			if( race.ValidateHair( newChar, args.HairID ) )
-			{
-				newChar.HairItemID = args.HairID;
-				newChar.HairHue = race.ClipHairHue( args.HairHue & 0x3FFF );
-			}
-
-			if( race.ValidateFacialHair( newChar, args.BeardID ) )
-			{
-				newChar.FacialHairItemID = args.BeardID;
-				newChar.FacialHairHue = race.ClipHairHue( args.BeardHue & 0x3FFF );
-			}
-
-			if ( args.Profession <= 3 )
-			{
-				AddShirt( newChar, args.ShirtHue );
-				AddPants( newChar, args.PantsHue );
-				AddShoes( newChar );
-			}
-
-			if( TestCenter.Enabled )
-				FillBankbox( newChar );
-
-			if ( young )
-			{
-				NewPlayerTicket ticket = new NewPlayerTicket();
-				ticket.Owner = newChar;
-				newChar.BankBox.DropItem( ticket );
-			}
+			SetName( newChar, NameList.RandomName(newChar.Female ? "female" : "male"));
+			SetStats( newChar, state, 25, 25, 25 );
+			// SetSkills( newChar, args.Skills, args.Profession );
 
 			CityInfo city = new CityInfo("Lost Lands", "Encampment", 5208, 3609, 15, Map.Felucca);
-
 			newChar.MoveToWorld( city.Location, city.Map );
+
+			//
+			///////////////////////////////////////////////////////
 
 			Console.WriteLine( "Login: {0}: New character being created (account={1})", state, args.Account.Username );
 			Console.WriteLine( " - Character: {0} (serial={1})", newChar.Name, newChar.Serial );

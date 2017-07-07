@@ -356,15 +356,12 @@ namespace Server.Engines.Craft
 			AddRes( index, typeof( RecallScroll ), 1044445, 1, 1044253 );
 			AddRes( index, typeof( GateTravelScroll ), 1044446, 1, 1044253 );
 
-			if ( Core.AOS )
-			{
-				AddCraft( typeof( BulkOrders.BulkOrderBook ), 1044294, 1028793, 65.0, 115.0, typeof( BlankScroll ), 1044377, 10, 1044378 );
-			}
 
-			if ( Core.SE )
-			{
-				AddCraft( typeof( Spellbook ), 1044294, 1023834, 50.0, 126, typeof( BlankScroll ), 1044377, 10, 1044378 );
-			}
+			// TheLostEra
+			AddCraft( typeof( BlankScroll ), 1044294, "Blank Scroll", 0, 120, typeof( WoodPulp ), "Wood Pulp", 1);
+			AddCraft( typeof( RecallRune ), 1044294, "Recall Rune", 25.0, 50.0, typeof( WoodPulp ), "Wood Pulp", 10);
+			AddCraft( typeof( BulkOrders.BulkOrderBook ), 1044294, 1028793, 65.0, 115.0, typeof( BlankScroll ), 1044377, 10, 1044378 );
+			AddCraft( typeof( Spellbook ), 1044294, 1023834, 50.0, 126, typeof( BlankScroll ), 1044377, 10, 1044378 );
 
 			/* TODO
 			if ( Core.ML )

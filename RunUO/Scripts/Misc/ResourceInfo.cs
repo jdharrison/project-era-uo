@@ -502,7 +502,7 @@ namespace Server.Items
 				return CraftResource.None;
 
 			CraftResource res;
-			
+
 			if (!m_TypeTable.TryGetValue(resourceType, out res))
 				return CraftResource.None;
 

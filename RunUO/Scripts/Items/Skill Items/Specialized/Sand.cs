@@ -19,7 +19,8 @@ namespace Server.Items
 		[Constructable]
 		public Sand( int amount ) : base( 0x11EA )
 		{
-			Stackable = Core.ML;
+			// TheLostEra
+			Stackable = true;
 			Weight = 1.0;
 		}
 

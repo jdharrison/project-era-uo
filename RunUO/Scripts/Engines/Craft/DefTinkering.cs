@@ -110,7 +110,7 @@ namespace Server.Engines.Craft
 					return 1044156; // You create an exceptional quality item and affix your maker's mark.
 				else if ( quality == 2 )
 					return 1044155; // You create an exceptional quality item.
-				else				
+				else
 					return 1044154; // You create the item.
 			}
 		}
@@ -190,6 +190,7 @@ namespace Server.Engines.Craft
 			AddCraft( typeof( FletcherTools ), 1044046, 1044166, 35.0, 85.0, typeof( IronIngot ), 1044036, 3, 1044037 );
 			AddCraft( typeof( MapmakersPen ), 1044046, 1044167, 25.0, 75.0, typeof( IronIngot ), 1044036, 1, 1044037 );
 			AddCraft( typeof( ScribesPen ), 1044046, 1044168, 25.0, 75.0, typeof( IronIngot ), 1044036, 1, 1044037 );
+			AddCraft( typeof( Blowpipe ), 1044046, "Blowpipe", 25.0, 50.0, typeof(IronIngot), 1044036, 5, 1044037);
 			#endregion
 
 			#region Parts
@@ -326,7 +327,7 @@ namespace Server.Engines.Craft
 			AddRes( index, typeof( IronIngot ), 1044036, 10, 1044037 );
 			AddRes( index, typeof( Gears ), 1044254, 1, 1044253 );
 
-			// Faction Spike Trap			
+			// Faction Spike Trap
 			index = AddCraft( typeof( FactionSpikeTrapDeed ), 1044052, 1044601, 65.0, 115.0, typeof( Silver ), 1044572, Core.AOS ? 250 : 1000, 1044253 );
 			AddRes( index, typeof( IronIngot ), 1044036, 10, 1044037 );
 			AddRes( index, typeof( Springs ), 1044171, 1, 1044253 );

@@ -3,7 +3,7 @@ using System;
 namespace Server.Items
 {
 	[FlipableAttribute( 0x1BD7, 0x1BDA )]
-	public class Board : Item, ICommodity
+	public class Board : Item, ICommodity, IAxe
 	{
 		private CraftResource m_Resource;
 
@@ -14,8 +14,8 @@ namespace Server.Items
 			set { m_Resource = value; InvalidateProperties(); }
 		}
 
-		int ICommodity.DescriptionNumber 
-		{ 
+		int ICommodity.DescriptionNumber
+		{
 			get
 			{
 				if ( m_Resource >= CraftResource.OakWood && m_Resource <= CraftResource.YewWood )
@@ -29,7 +29,7 @@ namespace Server.Items
 				}
 
 				return LabelNumber;
-			} 
+			}
 		}
 
 		bool ICommodity.IsDeedable { get { return true; } }
@@ -67,6 +67,16 @@ namespace Server.Items
 			Hue = CraftResources.GetHue( resource );
 		}
 
+		public bool Axe(Mobile from, BaseAxe axe)
+		{
+			if (Deleted || !from.CanSee(this))
+				return false;
+
+			from.AddToBackpack(new WoodPulp(5));
+
+			return true;
+		}
+
 		public override void GetProperties( ObjectPropertyList list )
 		{
 			base.GetProperties( list );
@@ -82,7 +92,7 @@ namespace Server.Items
 			}
 		}
 
-		
+
 
 		public override void Serialize( GenericWriter writer )
 		{

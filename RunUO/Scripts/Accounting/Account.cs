@@ -757,11 +757,50 @@ namespace Server.Accounting
 			m_Mobiles = new Mobile[7];
 
 			// TheLostEra
+			m_Mobiles[0] = CreateCharacter();
 
 			m_IPRestrictions = new string[0];
 			m_LoginIPs = new IPAddress[0];
 
 			Accounts.Add( this );
+		}
+
+		// TheLostEra
+		private PlayerMobile CreateCharacter()
+		{
+			PlayerMobile newChar = new PlayerMobile();
+
+			newChar.Player = true;
+			newChar.AccessLevel = AccessLevel;
+
+			newChar.Race = Race.DefaultRace;
+			newChar.Female = Utility.RandomBool();
+			newChar.Hue = newChar.Race.RandomSkinHue();
+			newChar.SandMining = true;
+			newChar.Glassblowing = true;
+			newChar.Hunger = 20;
+			newChar.Name = NameList.RandomName(newChar.Female ? "female" : "male");
+
+			Utility.AssignRandomHair(newChar,true);
+			if (!newChar.Female)
+				Utility.AssignRandomFacialHair(newChar, true);
+
+			Backpack backpack = new Backpack();
+			backpack.DropItem(new JacksToolkit());
+			newChar.AddItem(backpack);
+
+			newChar.InitStats(25, 25, 25);
+
+			CityInfo city = new CityInfo("Lost Lands", "Encampment", 5208, 3609, 15, Map.Felucca);
+			newChar.MoveToWorld( city.Location, city.Map );
+
+			Console.WriteLine( "New character being created (account={1})", Username );
+			Console.WriteLine( " - Character: {0} (serial={1})", newChar.Name, newChar.Serial );
+			Console.WriteLine( " - Started: {0} {1} in {2}", city.City, city.Location, city.Map );
+
+			new WelcomeTimer( newChar ).Start();
+
+			return newChar;
 		}
 
 		public Account( XmlElement node )

@@ -2,6 +2,14 @@
 {
 	public class JacksToolkit : TinkerTools
 	{
+		public override bool BreakOnDepletion { get { return false; } }
+		public override bool ShowUsesRemaining { get { return false; } set {} }
+
+		public override string DefaultName
+		{
+			get { return "Jack's Toolkit"; }
+		}
+
 		[Constructable]
 		public JacksToolkit() : base( int.MaxValue )
 		{
@@ -11,14 +19,6 @@
 
 		public JacksToolkit( Serial serial ) : base( serial )
 		{
-		}
-
-		public override bool BreakOnDepletion { get { return false; } }
-		public override bool ShowUsesRemaining { get { return false; } set {} }
-
-		public override string DefaultName
-		{
-			get { return "Jack's Toolkit"; }
 		}
 
 		public override void Serialize( GenericWriter writer )

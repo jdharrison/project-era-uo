@@ -1,6 +1,7 @@
 using System;
 
 using Server.Accounting;
+using Server.Guilds;
 using Server.Network;
 
 namespace Server
@@ -23,8 +24,11 @@ namespace Server
 			Mobile.InsuranceEnabled = Enabled;
 			ObjectPropertyList.Enabled = Enabled;
 			Mobile.VisibleDamageType = Enabled ? VisibleDamageType.Related : VisibleDamageType.None;
-			Mobile.GuildClickMessage = !Enabled;
 			Mobile.AsciiClickMessage = !Enabled;
+
+			// TheLostEra
+			Mobile.GuildClickMessage = true;
+
 
 			if ( Enabled )
 			{

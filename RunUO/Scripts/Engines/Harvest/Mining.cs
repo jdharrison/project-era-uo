@@ -110,19 +110,17 @@ namespace Server.Engines.Harvest
 			oreAndStone.Resources = res;
 			oreAndStone.Veins = veins;
 
-			if ( Core.ML )
+			// THeLostEra
+			oreAndStone.BonusResources = new BonusHarvestResource[]
 			{
-				oreAndStone.BonusResources = new BonusHarvestResource[]
-				{
-					new BonusHarvestResource( 0, 99.4, null, null ),	//Nothing
-					new BonusHarvestResource( 100, .1, 1072562, typeof( BlueDiamond ) ),
-					new BonusHarvestResource( 100, .1, 1072567, typeof( DarkSapphire ) ),
-					new BonusHarvestResource( 100, .1, 1072570, typeof( EcruCitrine ) ),
-					new BonusHarvestResource( 100, .1, 1072564, typeof( FireRuby ) ),
-					new BonusHarvestResource( 100, .1, 1072566, typeof( PerfectEmerald ) ),
-					new BonusHarvestResource( 100, .1, 1072568, typeof( Turquoise ) )
-				};
-			}
+				new BonusHarvestResource( 0, 99.4, null, null ),	//Nothing
+				new BonusHarvestResource( 100, .1, 1072562, typeof( BlueDiamond ) ),
+				new BonusHarvestResource( 100, .1, 1072567, typeof( DarkSapphire ) ),
+				new BonusHarvestResource( 100, .1, 1072570, typeof( EcruCitrine ) ),
+				new BonusHarvestResource( 100, .1, 1072564, typeof( FireRuby ) ),
+				new BonusHarvestResource( 100, .1, 1072566, typeof( PerfectEmerald ) ),
+				new BonusHarvestResource( 100, .1, 1072568, typeof( Turquoise ) )
+			};
 
 			oreAndStone.RaceBonus = Core.ML;
 			oreAndStone.RandomizeVeins = Core.ML;
@@ -175,7 +173,7 @@ namespace Server.Engines.Harvest
 
 			res = new HarvestResource[]
 				{
-					new HarvestResource( 100.0, 70.0, 400.0, 1044631, typeof( Sand ) )
+					new HarvestResource( 50.0, 25.0, 100.0, 1044631, typeof( Sand ) )
 				};
 
 			veins = new HarvestVein[]
@@ -236,7 +234,8 @@ namespace Server.Engines.Harvest
 			if ( !base.CheckHarvest( from, tool, def, toHarvest ) )
 				return false;
 
-			if ( def == m_Sand && !(from is PlayerMobile && from.Skills[SkillName.Mining].Base >= 100.0 && ((PlayerMobile)from).SandMining) )
+			// TheLostEra
+			if ( def == m_Sand && !(from is PlayerMobile && ((PlayerMobile)from).SandMining) )
 			{
 				OnBadHarvestTarget( from, tool, toHarvest );
 				return false;
