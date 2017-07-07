@@ -1600,15 +1600,15 @@ namespace Server
 		}
 
 		/* Logout:
-		 * 
+		 *
 		 * When a client logs into mobile x
 		 *  - if ( x is Internalized ) move x to logout location and map
-		 * 
+		 *
 		 * When a client attached to a mobile disconnects
 		 *  - LogoutTimer is started
 		 *	   - Delay is taken from Region.GetLogoutDelay to allow insta-logout regions.
 		 *     - OnTick : Location and map are stored, and mobile is internalized
-		 * 
+		 *
 		 * Some things to consider:
 		 *  - An internalized person getting killed (say, by poison). Where does the body go?
 		 *  - Regions now have a GetLogoutDelay( Mobile m ); virtual function (see above)
@@ -3552,9 +3552,12 @@ namespace Server
 
 				Warmode = false;
 
-				Hits = 10;
+				Hits = HitsMax;
 				Stam = StamMax;
-				Mana = 0;
+				Mana = ManaMax;
+
+				if (Hunger < 5)
+					Hunger = 5;
 
 				BodyMod = 0;
 				Body = this.Race.AliveBody( this );
@@ -7066,7 +7069,7 @@ namespace Server
 
 			return false;
 		}
-		
+
 		#endregion
 
 		#region Harmful Checks/Actions
@@ -7739,12 +7742,12 @@ namespace Server
 		}
 
 		#endregion
-		
+
 		public virtual int Luck
 		{
 			get { return 0; }
 		}
-		
+
 		public virtual int HuedItemID
 		{
 			get
@@ -7986,7 +7989,7 @@ namespace Server
 					m_Hidden = value;
 					//Delta( MobileDelta.Flags );
 
-					OnHiddenChanged();	
+					OnHiddenChanged();
 				}
 			}
 		}
@@ -9765,7 +9768,7 @@ namespace Server
 		///			SendMessage( "That is too heavy for you to lift." );
 		///			return false;
 		///		}
-		///		
+		///
 		///		return base.OnDragLift( item );
 		/// }</code>
 		/// </example>
@@ -10579,7 +10582,7 @@ namespace Server
 				IPooledEnumerable<NetState> eable = m_Map.GetClientsInRange(m_Location);
 
 				foreach( NetState state in eable ) {
-					if( state.Mobile.CanSee( this ) && (noLineOfSight || state.Mobile.InLOS( this )) ) {	
+					if( state.Mobile.CanSee( this ) && (noLineOfSight || state.Mobile.InLOS( this )) ) {
 						state.Send( p );
 					}
 				}
@@ -10875,7 +10878,7 @@ namespace Server
 		private static bool m_DisableDismountInWarmode;
 
 		public static bool DisableDismountInWarmode { get { return m_DisableDismountInWarmode; } set { m_DisableDismountInWarmode = value; } }
-		
+
 		#region OnDoubleClick[..]
 
 		/// <summary>
@@ -11045,7 +11048,7 @@ namespace Server
 		public static bool GuildClickMessage { get { return m_GuildClickMessage; } set { m_GuildClickMessage = value; } }
 		public static bool OldPropertyTitles { get { return m_OldPropertyTitles; } set { m_OldPropertyTitles = value; } }
 
-		public virtual bool ShowFameTitle { get { return true; } }//(m_Player || m_Body.IsHuman) && m_Fame >= 10000; } 
+		public virtual bool ShowFameTitle { get { return true; } }//(m_Player || m_Body.IsHuman) && m_Fame >= 10000; }
 
 		/// <summary>
 		/// Overridable. Event invoked when the Mobile is single clicked.
