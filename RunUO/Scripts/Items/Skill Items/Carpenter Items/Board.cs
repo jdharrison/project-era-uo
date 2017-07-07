@@ -72,7 +72,8 @@ namespace Server.Items
 			if (Deleted || !from.CanSee(this))
 				return false;
 
-			from.AddToBackpack(new WoodPulp(5));
+			from.AddToBackpack(new WoodPulp(5 * Amount));
+			Delete();
 
 			return true;
 		}
