@@ -395,6 +395,8 @@ namespace Server.Misc
 			{
 				acct.LogAccess( e.State );
 
+				acct.CheckDefaultCharacter();
+
 				Console.WriteLine( "Login: {0}: Account '{1}' at character list", e.State, un );
 				e.State.Account = acct;
 				e.Accepted = true;

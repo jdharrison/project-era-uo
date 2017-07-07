@@ -760,14 +760,14 @@ namespace Server.Accounting
 			m_LoginIPs = new IPAddress[0];
 
 			Accounts.Add( this );
-
-			// TheLostEra
-			this[0] = CreateCharacter();
 		}
 
 		// TheLostEra
-		private PlayerMobile CreateCharacter()
+		public void CheckDefaultCharacter()
 		{
+			if (Count > 0)
+				return;
+
 			PlayerMobile newChar = new PlayerMobile();
 
 			newChar.Player = true;
@@ -800,7 +800,8 @@ namespace Server.Accounting
 
 			new WelcomeTimer( newChar ).Start();
 
-			return newChar;
+			// TheLostEra
+			this[0] = newChar;
 		}
 
 		public Account( XmlElement node )
