@@ -98,7 +98,7 @@ namespace TheLostEra.DefaultCharacter
 
 	        if(startingItems != null)
 		        foreach(Item item in startingItems)
-			        m.AddItem(item);
+			        pack.AddItem(item);
         }
 
 
