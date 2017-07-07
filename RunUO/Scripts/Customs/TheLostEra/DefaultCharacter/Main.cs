@@ -68,10 +68,7 @@ namespace TheLostEra.DefaultCharacter
 	        if (!newChar.Female)
 		        Utility.AssignRandomFacialHair(newChar, true);
 
-	        AddBackpack(newChar, new Item[]
-	        {
-				new JacksToolkit()
-	        });
+	        AddBackpack(newChar, new Item[] { new JacksToolkit() }, new Item[] { new DeathRobe(), new Dagger() } );
 
 	        newChar.InitStats(25, 25, 25);
 
@@ -85,7 +82,7 @@ namespace TheLostEra.DefaultCharacter
 	        new WelcomeTimer( newChar ).Start();
         }
 
-        private static void AddBackpack(Mobile m, Item[] startingItems)
+        private static void AddBackpack(Mobile m, Item[] startingItems, Item[] startingEquipment)
         {
             Container pack = m.Backpack;
 
@@ -99,6 +96,10 @@ namespace TheLostEra.DefaultCharacter
 	        if(startingItems != null)
 		        foreach(Item item in startingItems)
 			        pack.AddItem(item);
+
+	        if(startingEquipment != null)
+		        foreach (Item equipment in startingEquipment)
+			        m.EquipItem(equipment);
         }
 
 
