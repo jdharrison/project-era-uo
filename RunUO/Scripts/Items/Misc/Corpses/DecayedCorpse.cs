@@ -8,7 +8,8 @@ namespace Server.Items
 		private Timer m_DecayTimer;
 		private DateTime m_DecayTime;
 
-		private static TimeSpan m_DefaultDecayTime = TimeSpan.FromMinutes( 7.0 );
+		// TheLostEra
+		private static TimeSpan m_DefaultDecayTime = TimeSpan.FromMinutes( 15.0 );
 
 		public DecayedCorpse( string name ) : base( Utility.Random( 0xECA, 9 ) )
 		{

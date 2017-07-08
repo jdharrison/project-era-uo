@@ -30,9 +30,9 @@ namespace Server.Misc
 			new string[]
 				{
 					"Welcome to The Lost Era!",
-					"Currently we are in Beta mode, but your data will NOT be wiped.",
-					"There is a Slack dedicated to support and annoucements, or just trade / general chat.",
-					"Join it @ 'thelostera-uo.slack.com'."
+					"The world's story will start soon, so prepare yourself.",
+					"This server is dedicated to an evolving global storyline coupled with a focus on hardcore survival aspects.",
+					"To register for announcements, community chat and support go to: 'register.thelostera.com'."
 				} );
 
 		public WelcomeTimer( Mobile m ) : this( m, m_Messages.Length )

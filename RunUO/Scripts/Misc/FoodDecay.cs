@@ -11,7 +11,7 @@ namespace Server.Misc
 			new FoodDecayTimer().Start();
 		}
 
-		public FoodDecayTimer() : base( TimeSpan.FromMinutes( 5 ), TimeSpan.FromMinutes( 5 ) )
+		public FoodDecayTimer() : base( TimeSpan.FromMinutes( 1 ), TimeSpan.FromMinutes( 2 ) )
 		{
 			Priority = TimerPriority.OneMinute;
 		}

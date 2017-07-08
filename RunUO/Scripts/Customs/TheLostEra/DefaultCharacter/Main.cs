@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using System.Text;
 using Server;
 using Server.Accounting;
@@ -60,8 +61,6 @@ namespace TheLostEra.DefaultCharacter
 	        newChar.Female = Utility.RandomBool();
 	        newChar.Body = newChar.Female ? 0x191 : 0x190;
 	        newChar.Hue = newChar.Race.RandomSkinHue();
-	        ((PlayerMobile)newChar).SandMining = true;
-	        ((PlayerMobile)newChar).Glassblowing = true;
 	        newChar.Hunger = 20;
 	        newChar.Name = NameList.RandomName(newChar.Female ? "female" : "male");
 
@@ -69,7 +68,11 @@ namespace TheLostEra.DefaultCharacter
 	        if (!newChar.Female)
 		        Utility.AssignRandomFacialHair(newChar, true);
 
-	        AddBackpack(newChar, new Item[] { new JacksToolkit() }, new Item[] { new DeathRobe(), new Dagger() } );
+	        AddBackpack(newChar, new Item[] { new JacksToolkit(), new Skillet() }, new Item[] { new DeathRobe(), new Dagger() } );
+
+	        newChar.Skills.Tinkering.BaseFixedPoint = 25;
+	        ((PlayerMobile)newChar).SandMining = true;
+	        ((PlayerMobile)newChar).Glassblowing = true;
 
 	        newChar.InitStats(25, 25, 25);
 

@@ -826,7 +826,18 @@ namespace Server.Mobiles
 			UpdateResistances();
 		}
 
-		public override int MaxWeight { get { return (((Core.ML && this.Race == Race.Human) ? 100 : 40) + (int)(3.5 * this.Str)); } }
+		public override int MaxWeight
+		{
+			get
+			{
+				float maxWeight = (Core.ML && Race == Race.Human ? 100 : 40) + (int)(3.5 * Str);
+
+				// TheLostEra
+				maxWeight *= 4;
+
+				return (int)maxWeight;
+			}
+		}
 
 		private int m_LastGlobalLight = -1, m_LastPersonalLight = -1;
 

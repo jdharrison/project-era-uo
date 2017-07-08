@@ -132,12 +132,20 @@ namespace Server.Misc
 
 			gc *= skill.Info.GainFactor;
 
+			////////////////////////////////////////////////////////////////////
 			// TheLostEra
 			if (from is PlayerMobile)
 			{
+				// accelerate skill gains that are low
+				if (skill.Base <= 50f)
+					gc *= skill.Cap / skill.Base * 2;
+
+				// multiply these based off hunger
 				float hungerGain = from.Hunger <= 0 ? 0 : from.Hunger / 10f;
 				gc *= hungerGain;
 			}
+			//
+			////////////////////////////////////////////////////////////////////
 
 			if ( gc < 0.01 )
 				gc = 0.01;
