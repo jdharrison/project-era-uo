@@ -68,7 +68,7 @@ namespace TheLostEra.DefaultCharacter
 	        if (!newChar.Female)
 		        Utility.AssignRandomFacialHair(newChar, true);
 
-	        AddBackpack(newChar, new Item[] { new JacksToolkit(), new Skillet() }, new Item[] { new DeathRobe(), new Dagger() } );
+	        AddBackpack(newChar, new Item[] { new JacksToolkit(), new Skillet(), new LambLeg(10)  }, new Item[] { new DeathRobe(), new Dagger() } );
 
 	        newChar.Skills.Tinkering.BaseFixedPoint = 25;
 	        ((PlayerMobile)newChar).SandMining = true;
