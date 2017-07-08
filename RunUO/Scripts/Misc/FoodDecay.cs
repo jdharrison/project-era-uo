@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using Server.Network;
 using Server;
+using Server.Items;
 
 namespace Server.Misc
 {
@@ -40,6 +42,13 @@ namespace Server.Misc
 
 			if (m.Alive && m.Player)
 			{
+				List<Food> foodInBag = m.Backpack.FindItemsByType<Food>();
+				while (m.Hunger < 15 && foodInBag.Count > 0)
+				{
+					foodInBag[0].Eat(m);
+					foodInBag.RemoveAt(0);
+				}
+
 				if (m.Hunger == 0)
 				{
 					m.SendMessage(0x21, "You have died of hunger!");
