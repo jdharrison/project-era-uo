@@ -42,12 +42,17 @@ namespace Server.Misc
 
 			if (m.Alive && m.Player)
 			{
+				bool ateFood = false;
 				List<Food> foodInBag = m.Backpack.FindItemsByType<Food>();
 				while (m.Hunger < 15 && foodInBag.Count > 0)
 				{
 					foodInBag[0].Eat(m);
 					foodInBag.RemoveAt(0);
+					ateFood = true;
 				}
+
+				if (ateFood)
+					m.SendMessage("Stricken with hunger, you consumed food found in your bag.");
 
 				if (m.Hunger == 0)
 				{
