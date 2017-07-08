@@ -57,9 +57,28 @@ namespace Server.Items
 			{
 				BaseHouse house = BaseHouse.FindHouseAt( from );
 
+				#region VendorTile
+				Sector sector = from.Map.GetSector(from.Location);
+				foreach (Item i in sector.Items)
+				{
+					if (i is VendorTile && i.Location.X == from.Location.X && i.Location.Y == from.Location.Y)
+					{
+						Mobile v = new PlayerVendor(from, house);
+
+						v.Direction = from.Direction & Direction.Mask;
+						v.MoveToWorld(from.Location, from.Map);
+
+						v.SayTo(from, 503246); // Ah! it feels good to be working again.
+
+						Delete();
+						return;
+					}
+				}
+				#endregion
+
 				if ( house == null )
 				{
-					from.SendLocalizedMessage( 503240 ); // Vendors can only be placed in houses.	
+					from.SendLocalizedMessage( 503240 ); // Vendors can only be placed in houses.
 				}
 				else if ( !BaseHouse.NewVendorSystem && !house.IsFriend( from ) )
 				{
@@ -69,7 +88,7 @@ namespace Server.Items
 				{
 					from.SendLocalizedMessage( 1062423 ); // Only the house owner can directly place vendors.  Please ask the house owner to offer you a vendor contract so that you may place a vendor in this house.
 				}
-				else if ( !house.Public || !house.CanPlaceNewVendor() ) 
+				else if ( !house.Public || !house.CanPlaceNewVendor() )
 				{
 					from.SendLocalizedMessage( 503241 ); // You cannot place this vendor or barkeep.  Make sure the house is public and has sufficient storage available.
 				}
