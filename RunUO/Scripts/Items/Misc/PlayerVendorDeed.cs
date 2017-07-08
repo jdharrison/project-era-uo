@@ -42,7 +42,7 @@ namespace Server.Items
 			}
 			else if ( from.AccessLevel >= AccessLevel.GameMaster )
 			{
-				from.SendLocalizedMessage( 503248 ); // Your godly powers allow you to place this vendor whereever you wish.
+				from.SendLocalizedMessage( 503248 ); // Your godly powers allowyou to place this vendor whereever you wish.
 
 				Mobile v = new PlayerVendor( from, BaseHouse.FindHouseAt( from ) );
 
@@ -57,65 +57,43 @@ namespace Server.Items
 			{
 				BaseHouse house = BaseHouse.FindHouseAt( from );
 
-				#region VendorTile
-				Sector sector = from.Map.GetSector(from.Location);
-				foreach (Item i in sector.Items)
+				if (house != null)
 				{
-					if (i is VendorTile && i.Location.X == from.Location.X && i.Location.Y == from.Location.Y)
+					if ( !BaseHouse.NewVendorSystem && !house.IsFriend( from ) )
 					{
-						Mobile v = new PlayerVendor(from, house);
-
-						v.Direction = from.Direction & Direction.Mask;
-						v.MoveToWorld(from.Location, from.Map);
-
-						v.SayTo(from, 503246); // Ah! it feels good to be working again.
-
-						Delete();
-						return;
+						from.SendLocalizedMessage( 503242 ); // You must ask the owner of this building to name you a friend of the household in order to place a vendor here.
+					}
+					else if ( BaseHouse.NewVendorSystem && !house.IsOwner( from ) )
+					{
+						from.SendLocalizedMessage( 1062423 ); // Only the house owner can directly place vendors.  Please ask the house owner to offer you a vendor contract so that you may place a vendor in this house.
+					}
+					else if ( !house.Public || !house.CanPlaceNewVendor() )
+					{
+						from.SendLocalizedMessage( 503241 ); // You cannot place this vendor or barkeep.  Make sure the house is public and has sufficient storage available.
 					}
 				}
-				#endregion
 
-				if ( house == null )
+				bool vendor, contract;
+				BaseHouse.IsThereVendor( from.Location, from.Map, out vendor, out contract );
+
+				if ( vendor )
 				{
-					from.SendLocalizedMessage( 503240 ); // Vendors can only be placed in houses.
+					from.SendLocalizedMessage( 1062677 ); // You cannot place a vendor or barkeep at this location.
 				}
-				else if ( !BaseHouse.NewVendorSystem && !house.IsFriend( from ) )
+				else if ( contract )
 				{
-					from.SendLocalizedMessage( 503242 ); // You must ask the owner of this building to name you a friend of the household in order to place a vendor here.
-				}
-				else if ( BaseHouse.NewVendorSystem && !house.IsOwner( from ) )
-				{
-					from.SendLocalizedMessage( 1062423 ); // Only the house owner can directly place vendors.  Please ask the house owner to offer you a vendor contract so that you may place a vendor in this house.
-				}
-				else if ( !house.Public || !house.CanPlaceNewVendor() )
-				{
-					from.SendLocalizedMessage( 503241 ); // You cannot place this vendor or barkeep.  Make sure the house is public and has sufficient storage available.
+					from.SendLocalizedMessage( 1062678 ); // You cannot place a vendor or barkeep on top of a rental contract!
 				}
 				else
 				{
-					bool vendor, contract;
-					BaseHouse.IsThereVendor( from.Location, from.Map, out vendor, out contract );
+					Mobile v = new PlayerVendor( from, house );
 
-					if ( vendor )
-					{
-						from.SendLocalizedMessage( 1062677 ); // You cannot place a vendor or barkeep at this location.
-					}
-					else if ( contract )
-					{
-						from.SendLocalizedMessage( 1062678 ); // You cannot place a vendor or barkeep on top of a rental contract!
-					}
-					else
-					{
-						Mobile v = new PlayerVendor( from, house );
+					v.Direction = from.Direction & Direction.Mask;
+					v.MoveToWorld( from.Location, from.Map );
 
-						v.Direction = from.Direction & Direction.Mask;
-						v.MoveToWorld( from.Location, from.Map );
+					v.SayTo( from, 503246 ); // Ah! it feels good to be working again.
 
-						v.SayTo( from, 503246 ); // Ah! it feels good to be working again.
-
-						this.Delete();
-					}
+					this.Delete();
 				}
 			}
 		}
